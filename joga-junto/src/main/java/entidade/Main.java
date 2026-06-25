@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner leitor = new Scanner(System.in);
         
-        // Chamada correta seguindo a lógica Singleton que você enviou
+       
         Connection conn = DBConnection.getInstance().getConnection();
 
         try {
@@ -23,7 +23,7 @@ public class Main {
                 return;
             }
 
-            // Inicialização dos DAOs passando a conexão
+            
             EquipeDAO equipeDAO = new EquipeDAO(conn);
             PartidaDAO partidaDAO = new PartidaDAO(conn);
             CompeticaoDAO competicaoDAO = new CompeticaoDAO(conn);
@@ -35,7 +35,8 @@ public class Main {
                 System.out.println("1 - Cadastrar Clube       2 - Listar Clubes");
                 System.out.println("3 - Remover Clube         4 - Criar Competição");
                 System.out.println("5 - Adicionar Time em Competição");
-                System.out.println("6 - Registrar Súmula      0 - Sair");
+                System.out.println("6 - Cadastrar Partida      7 - Registrar Súmula");
+                System.out.print("0 - Sair");
                 System.out.print("Escolha uma opção: ");
 
                 opcao = leitor.nextInt();
@@ -76,9 +77,63 @@ public class Main {
                         break;
 
                     case 6:
-                        System.out.print("ID da Partida: "); int idP = leitor.nextInt();
-                        System.out.print("Gols Casa: "); int gc = leitor.nextInt();
-                        System.out.print("Gols Visitante: "); int gv = leitor.nextInt();
+                        Partida partida = new Partida();
+
+                        System.out.print("Rodada: ");
+                        partida.setRodada(leitor.nextInt());
+                        leitor.nextLine();
+
+                        System.out.print("Data (AAAA-MM-DD): ");
+                        partida.setData(leitor.nextLine());
+
+                        System.out.print("Horário (HH:MM): ");
+                        partida.setHorario(leitor.nextLine());
+
+                        System.out.print("Local: ");
+                        partida.setLocal(leitor.nextLine());
+
+                        System.out.print("ID da Equipe Casa: ");
+                        int idEquipe1 = leitor.nextInt();
+
+                        System.out.print("ID da Equipe Visitante: ");
+                        int idEquipe2 = leitor.nextInt();
+
+                        System.out.print("ID da Competição: ");
+                        int idCompeticao = leitor.nextInt();
+                        leitor.nextLine();
+
+                        // Cria objetos apenas com os IDs
+                        Equipe equipe1 = new Equipe();
+                        equipe1.setId(idEquipe1);
+
+                        Equipe equipe2 = new Equipe();
+                        equipe2.setId(idEquipe2);
+
+                        Competicao competicao = new Competicao();
+                        competicao.setId(idCompeticao);
+
+                        partida.setEquipe1(equipe1);
+                        partida.setEquipe2(equipe2);
+                        partida.setCompeticao(competicao);
+
+                        partida.setGolsCasa(0);
+                        partida.setGolsVisitante(0);
+
+                        partidaDAO.inserir(partida);
+
+                        System.out.println("✅ Partida cadastrada com sucesso!");
+                        break;
+
+                    case 7:
+                        System.out.print("ID da Partida: ");
+                        int idP = leitor.nextInt();
+
+                        System.out.print("Gols Casa: ");
+                        int gc = leitor.nextInt();
+
+                        System.out.print("Gols Visitante: ");
+                        int gv = leitor.nextInt();
+
                         partidaDAO.registrarSumula(idP, gc, gv);
                         break;
 
