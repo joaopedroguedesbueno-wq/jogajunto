@@ -1,4 +1,86 @@
-Evolução do Projeto JogaJunto – 2º Bimestre
+📖 Sobre o Projeto
+
+O JogaJunto é um sistema desenvolvido em Java com o objetivo de gerenciar competições esportivas, permitindo o cadastro de equipes, criação de campeonatos e gerenciamento de partidas.
+
+O projeto foi criado com foco na aplicação prática dos conceitos de Programação Orientada a Objetos (POO), persistência de dados em banco de dados relacional e utilização de padrões de projeto para organização e manutenção do código.
+
+🚀 Funcionalidades
+
+O sistema oferece as seguintes funcionalidades:
+
+✅ Cadastro de equipes (clubes);
+✅ Listagem de equipes cadastradas;
+✅ Remoção de equipes;
+✅ Criação de competições;
+✅ Associação de equipes a competições;
+✅ Cadastro de partidas;
+✅ Registro de súmulas (placares das partidas);
+✅ Persistência dos dados em banco PostgreSQL.
+🛠️ Tecnologias Utilizadas
+Java
+PostgreSQL
+JDBC
+Programação Orientada a Objetos (POO)
+Padrão DAO (Data Access Object)
+Padrão Singleton
+Git e GitHub
+🏗️ Arquitetura do Projeto
+
+O sistema foi estruturado seguindo uma arquitetura em camadas, visando maior organização, reutilização e manutenção do código.
+
+Camada de Entidades
+
+Responsável por representar os objetos do sistema:
+
+Equipe
+Competicao
+Partida
+
+Cada entidade encapsula seus atributos e comportamentos utilizando os princípios da orientação a objetos.
+
+Camada DAO
+
+Responsável pelo acesso ao banco de dados, contendo todas as operações de persistência:
+
+EquipeDAO
+CompeticaoDAO
+PartidaDAO
+
+A utilização do padrão DAO promove a separação entre regras de negócio e acesso aos dados.
+
+Conexão com Banco
+
+A conexão com o banco de dados é gerenciada pela classe DBConnection, implementada utilizando o padrão Singleton, garantindo a existência de apenas uma instância de conexão durante a execução da aplicação.
+
+🗄️ Banco de Dados
+
+O projeto utiliza o PostgreSQL como Sistema Gerenciador de Banco de Dados (SGBD).
+
+Principais Tabelas
+equipe
+Armazena os clubes cadastrados.
+competicao
+Armazena os campeonatos e torneios.
+partida
+Armazena as partidas realizadas, relacionando equipes e competições.
+📋 Exemplo de Fluxo do Sistema
+Cadastrar equipes.
+Criar uma competição.
+Adicionar equipes à competição.
+Cadastrar partidas entre as equipes.
+Registrar o resultado das partidas através da súmula.
+🎯 Objetivos Acadêmicos
+
+Este projeto teve como principal objetivo consolidar conhecimentos em:
+
+Programação Orientada a Objetos;
+Persistência de dados utilizando JDBC;
+Modelagem relacional;
+Utilização de padrões de projeto;
+Organização de código em camadas;
+Desenvolvimento de aplicações Java integradas a banco de dados.
+
+***Evolução do Projeto JogaJunto – 2º Bimestre
 Visão Geral
 
 Durante este bimestre, a evolução do projeto JogaJunto foi significativa, demonstrando um avanço importante tanto na organização da aplicação quanto na qualidade do desenvolvimento. O foco principal esteve na melhoria da arquitetura do sistema, na implementação de boas práticas de programação e na criação de uma base mais sólida para futuras expansões.
